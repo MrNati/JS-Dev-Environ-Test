@@ -4,7 +4,12 @@
   "description": "JavaScript development environment test suit",
   "scripts": {
     "prestart": "babel-node buildScript/start-message.js",
-    "start": "babel-node buildScript/source-server.js"
+    "start": "npm-run-all --parallel open:src Lint:watch test:watch",
+    "open:src": "babel-node buildScript/source-server.js",
+    "lint": "esw webpack.config.* src buildScript --color",
+    "Lint:watch": "npm run lint -- --watch",
+    "test": "mocha --reporter progress buildScript/testSetup.js \"src/**/*.test.js\"",
+    "test:watch": "npm run test -- --watch"
   },
   "author": "Emeka Ananti",
   "dependencies": {},
