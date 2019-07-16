@@ -5,7 +5,7 @@ export function getUsers() {
 }
 
 function get(url) {
-  return fetch(baseUrl + url).then(onSuccess, onError);
+  return fetch(url).then(onSuccess, onError);
 }
 
 function onSuccess(response) {
